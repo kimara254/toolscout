@@ -51,7 +51,7 @@
       {{ range where .Site.RegularPages "Section" "tools" }}
       <article class="card tool-card" data-category="{{ .Params.category | default "Software" | lower }}" data-search="{{ .Title }} {{ .Description }} {{ .Params.category }}">
         <div class="card-top">
-          <span class="tool-mark {{ .Params.slug | lower }}">{{ if eq .Params.slug "notion" }}N{{ else if eq .Params.slug "trello" }}T{{ else if eq .Params.slug "obsidian" }}O{{ else }}{{ substr .Title 0 1 }}{{ end }}</span>
+          <span class="tool-mark {{ .Params.slug | lower }}">{{ if eq .Params.slug "notion" }}<img src="{{ "images/notion.svg" | relURL }}" alt="Notion" width="30" height="30" loading="lazy">{{ else if eq .Params.slug "trello" }}<img src="{{ "images/trello.svg" | relURL }}" alt="Trello" width="30" height="30" loading="lazy">{{ else if eq .Params.slug "obsidian" }}<img src="{{ "images/obsidian.svg" | relURL }}" alt="Obsidian" width="30" height="30" loading="lazy">{{ else }}{{ substr .Title 0 1 }}{{ end }}</span>
           <span class="category-label">{{ .Params.category | default "Software" }}</span>
         </div>
         <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>

@@ -391,3 +391,243 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
 }
+
+/* ToolScout — premium design refinement */
+:root {
+  --accent: #c8f169;
+  --line: #2b3a32;
+  --surface: #151f1a;
+  --shadow: 0 22px 55px rgba(0, 0, 0, .28);
+}
+
+html {
+  scroll-padding-top: 90px;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(18px);
+  background: rgba(12, 19, 16, .92);
+  border-bottom-color: rgba(200, 241, 105, .12);
+}
+
+.brand {
+  transition: opacity .2s ease;
+}
+
+.brand:hover {
+  opacity: .85;
+}
+
+.nav .nav-cta {
+  color: #101916;
+  background: var(--accent);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.nav .nav-cta:hover {
+  color: #101916;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(200, 241, 105, .16);
+}
+
+.hero {
+  border: 1px solid rgba(200, 241, 105, .15);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .18);
+}
+
+.search-box {
+  background: rgba(255, 255, 255, .075);
+  border-color: rgba(255, 255, 255, .2);
+  transition: border-color .2s ease, background .2s ease;
+}
+
+.search-box:focus-within {
+  background: rgba(255, 255, 255, .1);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(200, 241, 105, .08);
+}
+
+.filter-btn {
+  color: var(--ink-soft);
+  background: #151f1a;
+  border-color: #35463b;
+  transition: color .2s ease, background .2s ease,
+    border-color .2s ease, transform .2s ease;
+}
+
+.filter-btn:hover {
+  color: var(--ink);
+  border-color: var(--accent);
+}
+
+.filter-btn.active {
+  color: #101916;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.card {
+  background: linear-gradient(145deg, #1b2821, #131c17);
+  border-color: #2d3c33;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+}
+
+.card:hover {
+  border-color: rgba(200, 241, 105, .55);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, .25);
+}
+
+.card h3 a:hover {
+  color: var(--accent);
+}
+
+.category-label {
+  color: #d1e5b7;
+  background: #273529;
+  border: 1px solid rgba(200, 241, 105, .12);
+}
+
+.card .read-more {
+  color: var(--accent);
+}
+
+.card .read-more span {
+  color: var(--accent);
+}
+
+.value-strip {
+  border-color: var(--line);
+}
+
+.footer {
+  border-top-color: var(--line);
+}
+
+a, button, input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .header {
+    min-height: 68px;
+    padding: 12px 20px;
+    gap: 14px;
+  }
+
+  .brand {
+    font-size: 1.12rem;
+    gap: 8px;
+  }
+
+  .brand-mark {
+    width: 33px;
+    height: 33px;
+  }
+
+  .nav {
+    gap: 14px;
+  }
+
+  .nav a {
+    font-size: .8rem;
+  }
+
+  .nav .nav-cta {
+    padding: 8px 11px;
+  }
+
+  .container {
+    width: min(100% - 32px, var(--max-width));
+  }
+
+  .hero-wrap {
+    padding-top: 20px;
+  }
+
+  .hero {
+    border-radius: 22px;
+    padding: 42px 25px;
+  }
+
+  .section {
+    padding-top: 44px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    padding: 19px;
+  }
+}
+
+@media (max-width: 520px) {
+  .header {
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .nav a {
+    font-size: .77rem;
+  }
+
+  .hero {
+    padding: 36px 21px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.45rem, 12vw, 3.6rem);
+  }
+
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .card {
+    padding: 23px;
+  }
+
+  .section-heading {
+    align-items: start;
+  }
+
+  .result-count {
+    padding-top: 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}
+
+/* ToolScout product logos */
+.tool-mark,
+.tool-mark.trello,
+.tool-mark.obsidian {
+  background: #fff;
+}
+
+.tool-mark img {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
