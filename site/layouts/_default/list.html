@@ -3,26 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ .Site.Params.description }}">
+  <meta name="theme-color" content="#101916">
   <title>{{ .Title }} | {{ .Site.Title }}</title>
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
 </head>
 <body>
 <header class="header">
-  <a class="brand" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
-  <a href="{{ "/" | relURL }}">Home</a>
+  <a class="brand" href="{{ "/" | relURL }}"><span class="brand-mark">T.</span>ToolScout</a>
+  <nav class="nav" aria-label="Main navigation">
+    <a href="{{ "/" | relURL }}">Home</a>
+    <a href="{{ "disclosure/" | relURL }}">About our links</a>
+  </nav>
 </header>
 <main class="container">
-  <h1>{{ .Title }}</h1>
+  <section class="page-intro">
+    <p class="eyebrow">ToolScout library</p>
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Description | default .Site.Params.description }}</p>
+  </section>
   <section class="cards">
     {{ range .Pages }}
     <article class="card">
+      <div class="card-top"><span class="tool-mark {{ .Params.slug | lower }}">{{ substr .Title 0 1 }}</span><span class="category-label">{{ .Params.category | default "Software" }}</span></div>
       <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
       <p>{{ .Description }}</p>
-      <a class="read-more" href="{{ .RelPermalink }}">Read guide →</a>
+      <a class="read-more" href="{{ .RelPermalink }}">Explore guide <span>→</span></a>
     </article>
     {{ end }}
   </section>
 </main>
-<footer><a href="{{ "/" | relURL }}">ToolScout</a><a href="{{ "/disclosure/" | relURL }}">Affiliate Disclosure</a></footer>
+<footer class="footer"><div class="container"><div class="footer-inner"><a class="brand" href="{{ "/" | relURL }}"><span class="brand-mark">T.</span>ToolScout</a><nav class="footer-links"><a href="{{ "/" | relURL }}">Home</a><a href="{{ "disclosure/" | relURL }}">Affiliate disclosure</a></nav></div><div class="footer-bottom">© {{ now.Year }} ToolScout</div></div></footer>
 </body>
 </html>

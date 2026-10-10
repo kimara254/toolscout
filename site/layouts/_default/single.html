@@ -3,25 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ .Description | default .Site.Params.description }}">
+  <meta name="theme-color" content="#101916">
   <title>{{ .Title }} | {{ .Site.Title }}</title>
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
 </head>
 <body>
 <header class="header">
-  <a class="brand" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
-  <a href="{{ "/" | relURL }}">Home</a>
+  <a class="brand" href="{{ "/" | relURL }}"><span class="brand-mark">T.</span>ToolScout</a>
+  <nav class="nav" aria-label="Main navigation">
+    <a href="{{ "/" | relURL }}">Explore tools</a>
+    <a href="{{ "disclosure/" | relURL }}">Affiliate disclosure</a>
+  </nav>
 </header>
-<main class="container article">
-  <p class="eyebrow">{{ .Params.category | default "Software" }}</p>
-  <h1>{{ .Title }}</h1>
-  <p class="summary">{{ .Description }}</p>
-  <p class="muted">Updated: {{ .Lastmod.Format "2 January 2006" }}</p>
-  {{ .Content }}
-  {{ with .Params.official_url }}
-  <p><a class="button" href="{{ . }}" target="_blank" rel="nofollow sponsored noopener">Visit official website ↗</a></p>
-  {{ end }}
-  <p class="disclosure">Disclosure: Some links on this site may earn a commission if you purchase through them. Any affiliate relationship will be disclosed clearly.</p>
+<main class="container">
+  <article class="article">
+    <p class="breadcrumb"><a href="{{ "/" | relURL }}">ToolScout</a> / <a href="{{ "tools/" | relURL }}">Guides</a> / {{ .Title }}</p>
+    <p class="eyebrow">{{ .Params.category | default "Software guide" }}</p>
+    <h1>{{ .Title }}</h1>
+    <p class="summary">{{ .Description }}</p>
+    <p class="muted">Guide last updated {{ .Lastmod.Format "2 January 2006" }}</p>
+    {{ .Content }}
+    {{ with .Params.official_url }}
+    <p><a class="button" href="{{ . }}" target="_blank" rel="nofollow sponsored noopener">Visit official website <span aria-hidden="true">↗</span></a></p>
+    {{ end }}
+    <p class="disclosure"><strong>Transparency:</strong> Some links on ToolScout may earn us a commission if you make a qualifying purchase, at no extra cost to you. See our <a href="{{ "disclosure/" | relURL }}"><strong>affiliate disclosure</strong></a>. We aim to provide useful information to help you evaluate your options.</p>
+  </article>
 </main>
-<footer><a href="{{ "/" | relURL }}">← Back to all guides</a><a href="{{ "/disclosure/" | relURL }}">Affiliate Disclosure</a></footer>
+<footer class="footer"><div class="container"><div class="footer-inner"><div><a class="brand" href="{{ "/" | relURL }}"><span class="brand-mark">T.</span>ToolScout</a><p>Thoughtful software discovery for your next idea.</p></div><nav class="footer-links"><a href="{{ "/" | relURL }}">Home</a><a href="{{ "tools/" | relURL }}">All guides</a><a href="{{ "disclosure/" | relURL }}">Affiliate disclosure</a></nav></div><div class="footer-bottom">© {{ now.Year }} ToolScout</div></div></footer>
 </body>
 </html>

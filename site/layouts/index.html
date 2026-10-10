@@ -4,34 +4,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ .Site.Params.description }}">
-  <title>{{ .Site.Title }}</title>
+  <meta name="theme-color" content="#101916">
+  <title>{{ .Site.Title }} — Discover tools that move you forward</title>
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
 </head>
 <body>
 <header class="header">
-  <a class="brand" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
-  <span>Independent software guides</span>
+  <a class="brand" href="{{ "/" | relURL }}"><span class="brand-mark">T.</span>ToolScout</a>
+  <nav class="nav" aria-label="Main navigation">
+    <a href="#explore">Explore tools</a>
+    <a href="{{ "disclosure/" | relURL }}">About our links</a>
+    <a class="nav-cta" href="#explore">Find your tool ↗</a>
+  </nav>
 </header>
-<main class="container">
-  <section class="hero">
-    <p class="eyebrow">THE PRACTICAL SOFTWARE GUIDE</p>
-    <h1>Find tools that work for you.</h1>
-    <p>Clear introductions, useful features, and links to explore software further.</p>
-  </section>
-  <h2>Latest tool guides</h2>
-  <section class="cards">
-    {{ range where .Site.RegularPages "Section" "tools" }}
-    <article class="card">
-      <p class="eyebrow">{{ .Params.category | default "Software" }}</p>
-      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-      <p>{{ .Description }}</p>
-      <a class="read-more" href="{{ .RelPermalink }}">Read guide →</a>
-    </article>
-    {{ else }}
-    <p>No guides published yet. Run the Python content generator.</p>
-    {{ end }}
+<main>
+  <div class="container hero-wrap">
+    <section class="hero">
+      <p class="eyebrow">A smarter way to find software</p>
+      <h1>Less searching.<br><span>Better tools.</span></h1>
+      <p class="hero-copy">Discover software for your work, ideas, and everyday projects. Straightforward guides to help you explore your options with confidence.</p>
+      <label class="search-box">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="tool-search" type="search" placeholder="Search tools, categories, or tasks..." aria-label="Search software guides">
+        <span aria-hidden="true">↵</span>
+      </label>
+      <p class="search-hint">Search our guides or choose a category below.</p>
+    </section>
+  </div>
+
+  <section class="container section" id="explore">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">The collection</p>
+        <h2>Explore software</h2>
+        <p>Useful tools, clearly explained.</p>
+      </div>
+      <span class="result-count" id="result-count"></span>
+    </div>
+    <div class="filters" aria-label="Filter by category">
+      <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All tools</button>
+      <button class="filter-btn" type="button" data-filter="productivity" aria-pressed="false">Productivity</button>
+      <button class="filter-btn" type="button" data-filter="project management" aria-pressed="false">Project management</button>
+      <button class="filter-btn" type="button" data-filter="note-taking" aria-pressed="false">Note-taking</button>
+    </div>
+    <div class="cards" id="tool-cards">
+      {{ range where .Site.RegularPages "Section" "tools" }}
+      <article class="card tool-card" data-category="{{ .Params.category | default "Software" | lower }}" data-search="{{ .Title }} {{ .Description }} {{ .Params.category }}">
+        <div class="card-top">
+          <span class="tool-mark {{ .Params.slug | lower }}">{{ if eq .Params.slug "notion" }}N{{ else if eq .Params.slug "trello" }}T{{ else if eq .Params.slug "obsidian" }}O{{ else }}{{ substr .Title 0 1 }}{{ end }}</span>
+          <span class="category-label">{{ .Params.category | default "Software" }}</span>
+        </div>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p>{{ .Description }}</p>
+        <a class="read-more" href="{{ .RelPermalink }}">Explore guide <span>→</span></a>
+      </article>
+      {{ else }}
+      <p>No guides published yet. New guides will appear here.</p>
+      {{ end }}
+      <div class="no-results" id="no-results" hidden>No matching guides yet. Try another search or category.</div>
+    </div>
+
+    <div class="value-strip">
+      <div class="value-item"><strong>Practical over complicated</strong><p>Clear explanations without unnecessary jargon.</p></div>
+      <div class="value-item"><strong>Explore before you commit</strong><p>Visit official sites to check features and current pricing.</p></div>
+      <div class="value-item"><strong>Reader-first approach</strong><p>Our goal is to help you find tools that fit your needs.</p></div>
+    </div>
   </section>
 </main>
-<footer>ToolScout · Research tools carefully before purchasing. · <a href="{{ "/disclosure/" | relURL }}">Affiliate Disclosure</a></footer>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a class="brand" href="{{ "/" | relURL }}"><span class="brand-mark">T.</span>ToolScout</a>
+        <p>Thoughtful software discovery for work, creativity, and everyday productivity.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="{{ "/" | relURL }}">Home</a>
+        <a href="{{ "tools/" | relURL }}">All guides</a>
+        <a href="{{ "disclosure/" | relURL }}">Affiliate disclosure</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">© {{ now.Year }} ToolScout. Research tools carefully before purchasing.</div>
+  </div>
+</footer>
+<script src="{{ "js/site.js" | relURL }}" defer></script>
 </body>
 </html>
