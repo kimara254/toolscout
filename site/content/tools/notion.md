@@ -33,4 +33,4 @@ Visit the official website to check the current features, plans, and terms befor
 
 ## Notion workspace preview
 
-![Notion workspace preview](/images/notion-template-03.png)
+![Notion workspace preview](/toolscout/images/notion-template-03.png)
