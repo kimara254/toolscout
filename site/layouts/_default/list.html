@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ .Title }} | {{ .Site.Title }}</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
 </head>
 <body>
 <header class="header">
-  <a class="brand" href="/">{{ .Site.Title }}</a>
-  <a href="/">Home</a>
+  <a class="brand" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
+  <a href="{{ "/" | relURL }}">Home</a>
 </header>
 <main class="container">
   <h1>{{ .Title }}</h1>
@@ -23,6 +23,6 @@
     {{ end }}
   </section>
 </main>
-<footer><a href="/">ToolScout</a></footer>
+<footer><a href="{{ "/" | relURL }}">ToolScout</a></footer>
 </body>
 </html>

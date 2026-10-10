@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ .Title }} | {{ .Site.Title }}</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
 </head>
 <body>
 <header class="header">
-  <a class="brand" href="/">{{ .Site.Title }}</a>
-  <a href="/">Home</a>
+  <a class="brand" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
+  <a href="{{ "/" | relURL }}">Home</a>
 </header>
 <main class="container article">
   <p class="eyebrow">{{ .Params.category | default "Software" }}</p>
@@ -22,6 +22,6 @@
   {{ end }}
   <p class="disclosure">Disclosure: Some links on this site may earn a commission if you purchase through them. Any affiliate relationship will be disclosed clearly.</p>
 </main>
-<footer><a href="/">← Back to all guides</a></footer>
+<footer><a href="{{ "/" | relURL }}">← Back to all guides</a></footer>
 </body>
 </html>
