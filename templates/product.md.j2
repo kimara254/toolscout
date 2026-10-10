@@ -1,0 +1,28 @@
+---
+title: {{ name | tojson }}
+description: {{ description | tojson }}
+slug: {{ slug | tojson }}
+category: {{ category | tojson }}
+official_url: {{ official_url | tojson }}
+date: {{ build_date | tojson }}
+lastmod: {{ build_date | tojson }}
+draft: false
+---
+
+## What is {{ name }}?
+
+{{ description }}
+
+## Key features
+
+{% for feature in features %}
+- {{ feature }}
+{% endfor %}
+
+## Who is it for?
+
+{{ best_for }}
+
+## Where to learn more
+
+Visit the official website to check the current features, plans, and terms before deciding whether the tool suits your needs.

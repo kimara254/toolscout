@@ -1,0 +1,6 @@
+baseURL = "http://localhost:1313/"
+languageCode = "en-us"
+title = "ToolScout"
+
+[params]
+  description = "Practical guides to software and AI tools."

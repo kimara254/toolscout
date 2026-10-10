@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="header">
+  <a class="brand" href="/">{{ .Site.Title }}</a>
+  <a href="/">Home</a>
+</header>
+<main class="container">
+  <h1>{{ .Title }}</h1>
+  <section class="cards">
+    {{ range .Pages }}
+    <article class="card">
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Description }}</p>
+      <a class="read-more" href="{{ .RelPermalink }}">Read guide →</a>
+    </article>
+    {{ end }}
+  </section>
+</main>
+<footer><a href="/">ToolScout</a></footer>
+</body>
+</html>

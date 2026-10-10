@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="header">
+  <a class="brand" href="/">{{ .Site.Title }}</a>
+  <a href="/">Home</a>
+</header>
+<main class="container article">
+  <p class="eyebrow">{{ .Params.category | default "Software" }}</p>
+  <h1>{{ .Title }}</h1>
+  <p class="summary">{{ .Description }}</p>
+  <p class="muted">Updated: {{ .Lastmod.Format "2 January 2006" }}</p>
+  {{ .Content }}
+  {{ with .Params.official_url }}
+  <p><a class="button" href="{{ . }}" target="_blank" rel="nofollow sponsored noopener">Visit official website ↗</a></p>
+  {{ end }}
+  <p class="disclosure">Disclosure: Some links on this site may earn a commission if you purchase through them. Any affiliate relationship will be disclosed clearly.</p>
+</main>
+<footer><a href="/">← Back to all guides</a></footer>
+</body>
+</html>

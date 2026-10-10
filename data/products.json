@@ -1,0 +1,41 @@
+[
+  {
+    "slug": "notion",
+    "name": "Notion",
+    "category": "Productivity",
+    "description": "A workspace for organizing notes, projects, documents, and team knowledge.",
+    "official_url": "https://www.notion.so/",
+    "features": [
+      "Organize notes and documents",
+      "Manage projects and tasks",
+      "Keep team knowledge in one workspace"
+    ],
+    "best_for": "People who want notes, projects, and documentation in one workspace."
+  },
+  {
+    "slug": "trello",
+    "name": "Trello",
+    "category": "Project management",
+    "description": "A visual project management tool built around boards, lists, and cards.",
+    "official_url": "https://trello.com/",
+    "features": [
+      "Visual task boards",
+      "Track work through lists and cards",
+      "Organize personal or team projects"
+    ],
+    "best_for": "Individuals and teams who prefer a visual overview of tasks."
+  },
+  {
+    "slug": "obsidian",
+    "name": "Obsidian",
+    "category": "Note-taking",
+    "description": "A note-taking application that helps you organize connected ideas and personal knowledge.",
+    "official_url": "https://obsidian.md/",
+    "features": [
+      "Create linked notes",
+      "Build a personal knowledge base",
+      "Organize information in a local vault"
+    ],
+    "best_for": "People who want to connect research, notes, and ideas."
+  }
+]

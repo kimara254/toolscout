@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Discover Better Tools on ToolScout</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content in Discover Better Tools on ToolScout</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 10 Oct 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Notion</title>
+      <link>http://localhost:1313/tools/notion/</link>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tools/notion/</guid>
+      <description>&lt;h2 id=&#34;what-is-notion&#34;&gt;What is Notion?&lt;/h2&gt;&#xA;&lt;p&gt;A workspace for organizing notes, projects, documents, and team knowledge.&lt;/p&gt;&#xA;&lt;h2 id=&#34;key-features&#34;&gt;Key features&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Organize notes and documents&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Manage projects and tasks&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Keep team knowledge in one workspace&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;who-is-it-for&#34;&gt;Who is it for?&lt;/h2&gt;&#xA;&lt;p&gt;People who want notes, projects, and documentation in one workspace.&lt;/p&gt;&#xA;&lt;h2 id=&#34;where-to-learn-more&#34;&gt;Where to learn more&lt;/h2&gt;&#xA;&lt;p&gt;Visit the official website to check the current features, plans, and terms before deciding whether the tool suits your needs.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Obsidian</title>
+      <link>http://localhost:1313/tools/obsidian/</link>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tools/obsidian/</guid>
+      <description>&lt;h2 id=&#34;what-is-obsidian&#34;&gt;What is Obsidian?&lt;/h2&gt;&#xA;&lt;p&gt;A note-taking application that helps you organize connected ideas and personal knowledge.&lt;/p&gt;&#xA;&lt;h2 id=&#34;key-features&#34;&gt;Key features&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Create linked notes&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Build a personal knowledge base&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Organize information in a local vault&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;who-is-it-for&#34;&gt;Who is it for?&lt;/h2&gt;&#xA;&lt;p&gt;People who want to connect research, notes, and ideas.&lt;/p&gt;&#xA;&lt;h2 id=&#34;where-to-learn-more&#34;&gt;Where to learn more&lt;/h2&gt;&#xA;&lt;p&gt;Visit the official website to check the current features, plans, and terms before deciding whether the tool suits your needs.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Trello</title>
+      <link>http://localhost:1313/tools/trello/</link>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tools/trello/</guid>
+      <description>&lt;h2 id=&#34;what-is-trello&#34;&gt;What is Trello?&lt;/h2&gt;&#xA;&lt;p&gt;A visual project management tool built around boards, lists, and cards.&lt;/p&gt;&#xA;&lt;h2 id=&#34;key-features&#34;&gt;Key features&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Visual task boards&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Track work through lists and cards&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Organize personal or team projects&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;who-is-it-for&#34;&gt;Who is it for?&lt;/h2&gt;&#xA;&lt;p&gt;Individuals and teams who prefer a visual overview of tasks.&lt;/p&gt;&#xA;&lt;h2 id=&#34;where-to-learn-more&#34;&gt;Where to learn more&lt;/h2&gt;&#xA;&lt;p&gt;Visit the official website to check the current features, plans, and terms before deciding whether the tool suits your needs.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
