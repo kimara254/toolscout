@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kimara254.github.io/toolscout/sitemap.xml
