@@ -46,6 +46,27 @@ jobs:
       - name: Build website
         run: hugo --source site --destination "${GITHUB_WORKSPACE}/public" --minify --baseURL "https://kimara254.github.io/toolscout/"
 
+      - name: Create plain-text sitemap fallback
+        run: |
+          python - <<'PYTHON'
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          root = ET.parse("public/sitemap.xml").getroot()
+          ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+          urls = [
+              item.text.strip()
+              for item in root.findall("sm:url/sm:loc", ns)
+              if item.text and item.text.strip()
+          ]
+          if not urls:
+              raise SystemExit("No sitemap URLs found")
+          Path("public/sitemap.txt").write_text(
+              "\n".join(urls) + "\n", encoding="utf-8"
+          )
+          print(f"Created text sitemap with {len(urls)} URLs")
+          PYTHON
+
       - name: Upload website
         uses: actions/upload-pages-artifact@v4
         with:
