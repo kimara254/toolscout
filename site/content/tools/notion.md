@@ -5,7 +5,7 @@ slug: "notion"
 category: "Productivity"
 official_url: "https://www.notion.so/"
 date: "2026-10-10"
-lastmod: "2026-10-10"
+lastmod: "2026-10-11"
 draft: false
 ---
 
@@ -30,7 +30,3 @@ People who want notes, projects, and documentation in one workspace.
 ## Where to learn more
 
 Visit the official website to check the current features, plans, and terms before deciding whether the tool suits your needs.
-
-## Notion workspace preview
-
-![Notion workspace preview](/toolscout/images/notion-template-03.png)

@@ -17,6 +17,7 @@ ALLOWED_HOSTS = {
     "obsidian": "obsidian.md",
 }
 
+
 def validate_product(product):
     required = {
         "slug", "name", "category", "description",
@@ -40,6 +41,20 @@ def validate_product(product):
     if not isinstance(product["features"], list) or not product["features"]:
         raise ValueError(f"Features must be a non-empty list for {slug}")
 
+
+def existing_dates(target):
+    if not target.exists():
+        return None, None
+
+    text = target.read_text(encoding="utf-8")
+    date_match = re.search(r'^date:\s*"([^"]+)"\s*$', text, re.MULTILINE)
+    lastmod_match = re.search(r'^lastmod:\s*"([^"]+)"\s*$', text, re.MULTILINE)
+
+    original_date = date_match.group(1) if date_match else None
+    original_lastmod = lastmod_match.group(1) if lastmod_match else original_date
+    return original_date, original_lastmod
+
+
 def main():
     products = json.loads(DATA_FILE.read_text(encoding="utf-8"))
     if not isinstance(products, list):
@@ -59,16 +74,48 @@ def main():
 
     for product in products:
         validate_product(product)
-        if product["slug"] in seen:
-            raise ValueError(f"Duplicate product slug: {product['slug']}")
-        seen.add(product["slug"])
+        slug = product["slug"]
 
-        rendered = template.render(**product, build_date=today)
-        target = OUTPUT_DIR / f"{product['slug']}.md"
+        if slug in seen:
+            raise ValueError(f"Duplicate product slug: {slug}")
+        seen.add(slug)
+
+        target = OUTPUT_DIR / f"{slug}.md"
+        original_date, original_lastmod = existing_dates(target)
+
+        rendered = template.render(
+            **product,
+            build_date=original_date or today,
+        )
+
+        if target.exists():
+            previous = target.read_text(encoding="utf-8")
+            if rendered != previous:
+                # Preserve the original publication date and update lastmod.
+                rendered = re.sub(
+                    r'^lastmod:\s*"[^"]+"\s*$',
+                    f'lastmod: "{today}"',
+                    rendered,
+                    count=1,
+                    flags=re.MULTILINE,
+                )
+            else:
+                print(f"Unchanged: {target.relative_to(ROOT)}")
+                continue
+        else:
+            rendered = re.sub(
+                r'^lastmod:\s*"[^"]+"\s*$',
+                f'lastmod: "{today}"',
+                rendered,
+                count=1,
+                flags=re.MULTILINE,
+            )
+
         target.write_text(rendered, encoding="utf-8")
         print(f"Generated: {target.relative_to(ROOT)}")
 
     print(f"\nSuccess: generated {len(products)} product pages.")
+
 
 if __name__ == "__main__":
     main()
