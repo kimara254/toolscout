@@ -44,7 +44,7 @@ jobs:
           enablement: true
 
       - name: Build website
-        run: hugo --source site --destination public --minify --baseURL "https://kimara254.github.io/toolscout/"
+        run: hugo --source site --destination "${GITHUB_WORKSPACE}/public" --minify --baseURL "https://kimara254.github.io/toolscout/"
 
       - name: Upload website
         uses: actions/upload-pages-artifact@v4
