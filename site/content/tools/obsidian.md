@@ -5,7 +5,7 @@ slug: "obsidian"
 category: "Note-taking"
 official_url: "https://obsidian.md/"
 date: "2026-10-10"
-lastmod: "2026-10-10"
+lastmod: "2026-10-11"
 draft: false
 ---
 
@@ -26,6 +26,8 @@ A note-taking application that helps you organize connected ideas and personal k
 ## Who is it for?
 
 People who want to connect research, notes, and ideas.
+
+
 
 ## Where to learn more
 

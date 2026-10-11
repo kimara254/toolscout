@@ -5,7 +5,7 @@ slug: "trello"
 category: "Project management"
 official_url: "https://trello.com/"
 date: "2026-10-10"
-lastmod: "2026-10-10"
+lastmod: "2026-10-11"
 draft: false
 ---
 
@@ -26,6 +26,8 @@ A visual project management tool built around boards, lists, and cards.
 ## Who is it for?
 
 Individuals and teams who prefer a visual overview of tasks.
+
+
 
 ## Where to learn more
 

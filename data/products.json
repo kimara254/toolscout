@@ -10,7 +10,16 @@
       "Manage projects and tasks",
       "Keep team knowledge in one workspace"
     ],
-    "best_for": "People who want notes, projects, and documentation in one workspace."
+    "best_for": "People who want notes, projects, and documentation in one workspace.",
+    "screenshots": [
+      "notion-template-01.png",
+      "notion-template-02.png",
+      "notion-template-03.png",
+      "notion-template-04.png",
+      "notion-template-05.png",
+      "notion-template-06.png",
+      "notion-template-07.png"
+    ]
   },
   {
     "slug": "trello",

@@ -23,6 +23,16 @@ draft: false
 
 {{ best_for }}
 
+{% if screenshots | default([]) %}
+
+## Screenshots
+
+{% for screenshot in screenshots %}
+![{{ name }} screenshot {{ loop.index }}](../../images/{{ screenshot }})
+
+{% endfor %}
+{% endif %}
+
 ## Where to learn more
 
 Visit the official website to check the current features, plans, and terms before deciding whether the tool suits your needs.
