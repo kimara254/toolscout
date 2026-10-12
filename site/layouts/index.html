@@ -33,41 +33,95 @@
   </div>
 
 
-<section class="promo-showcase" aria-label="Featured tools">
-  <div class="promo-intro">
-    <p class="eyebrow">A little inspiration</p>
-    <h2>Tools that move ideas forward.</h2>
-    <p>Discover useful software for creating, organizing and getting things done.</p>
-  </div>
-  <div class="promo-grid">
-    <article class="promo-card promo-printify">
-      <div class="promo-card-top"><span class="promo-icon" aria-hidden="true">✦</span><span class="promo-label">Partner offer</span></div>
-      <p class="promo-category">Print on demand</p>
-      <h3>Bring your ideas to life.</h3>
-      <p>Create custom products such as T-shirts and mugs with Printify.</p>
-      <a class="promo-link" href="https://try.printify.com/7v161q2dj7ua" target="_blank" rel="nofollow sponsored noopener">Explore Printify <span aria-hidden="true">↗</span></a>
-    </article>
-    <article class="promo-card promo-notion">
-      <div class="promo-card-top"><span class="promo-icon" aria-hidden="true">N</span><span class="promo-label">Productivity</span></div>
-      <p class="promo-category">Your workspace</p>
-      <h3>Make room for your best work.</h3>
-      <p>Bring notes, projects and everyday planning together with Notion.</p>
-      <a class="promo-link" href="{{ "tools/notion/" | relURL }}">Explore Notion <span aria-hidden="true">→</span></a>
-    </article>
-    <article class="promo-card promo-obsidian">
-      <div class="promo-card-top"><span class="promo-icon" aria-hidden="true">◇</span><span class="promo-label">Note-taking</span></div>
-      <p class="promo-category">Connected thinking</p>
-      <h3>Connect the dots.</h3>
-      <p>Explore a personal knowledge base built around linked ideas.</p>
-      <a class="promo-link" href="{{ "tools/obsidian/" | relURL }}">Explore Obsidian <span aria-hidden="true">→</span></a>
-    </article>
-    <article class="promo-card promo-trello">
-      <div class="promo-card-top"><span class="promo-icon" aria-hidden="true">▤</span><span class="promo-label">Project management</span></div>
-      <p class="promo-category">Make progress visible</p>
-      <h3>Turn plans into progress.</h3>
-      <p>Organize tasks and track projects with visual boards and lists.</p>
-      <a class="promo-link" href="{{ "tools/trello/" | relURL }}">Explore Trello <span aria-hidden="true">→</span></a>
-    </article>
+<section class="promo-showcase" aria-labelledby="featured-title">
+  <div class="promo-shell">
+    <div class="promo-intro">
+      <p class="eyebrow"><span class="live-dot"></span> Discover something useful</p>
+      <h2 id="featured-title">Good tools make <span>great things happen.</span></h2>
+      <p>Explore a few standout tools for creating, thinking and getting things done.</p>
+    </div>
+
+    <div class="promo-grid">
+      <article class="promo-card promo-printify reveal">
+        <div class="promo-visual printify-visual" aria-hidden="true">
+          <div class="printify-orbit"></div>
+          <div class="product-shirt"><span>YOUR<br>IDEA</span></div>
+          <div class="product-mug"><span>✳</span></div>
+          <div class="visual-tag">YOUR BRAND, YOUR WAY</div>
+        </div>
+        <div class="promo-copy">
+          <div class="promo-card-top"><span class="promo-icon">✦</span><span class="promo-label">Partner offer</span></div>
+          <p class="promo-category">Print on demand</p>
+          <h3>Turn your ideas into products.</h3>
+          <p>Create custom T-shirts, mugs and more with a print-on-demand platform.</p>
+          <a class="promo-link" href="https://try.printify.com/7v161q2dj7ua" target="_blank" rel="nofollow sponsored noopener">Explore Printify <span>↗</span></a>
+        </div>
+      </article>
+
+      <article class="promo-card promo-notion reveal">
+        <div class="promo-visual notion-visual" aria-hidden="true">
+          <div class="notion-window">
+            <div class="mock-window-top"><i></i><i></i><i></i><span>My workspace</span></div>
+            <div class="notion-layout">
+              <div class="notion-sidebar"><b>✳</b><span></span><span></span><span></span></div>
+              <div class="notion-page"><b>Project hub</b><span class="mock-line wide"></span><span class="mock-line"></span><div class="notion-task"><i>✓</i><span>Plan the week</span></div><div class="notion-task"><i>✓</i><span>Capture ideas</span></div></div>
+            </div>
+          </div>
+          <span class="floating-note">Everything in one place</span>
+        </div>
+        <div class="promo-copy">
+          <div class="promo-card-top"><span class="promo-icon">N</span><span class="promo-label">Productivity</span></div>
+          <p class="promo-category">Your digital workspace</p>
+          <h3>Make room for your best work.</h3>
+          <p>Bring notes, plans, documents and projects together in one workspace.</p>
+          <a class="promo-link" href="{{ "tools/notion/" | relURL }}">Explore Notion <span>→</span></a>
+        </div>
+      </article>
+
+      <article class="promo-card promo-obsidian reveal">
+        <div class="promo-visual obsidian-visual" aria-hidden="true">
+          <svg class="knowledge-graph" viewBox="0 0 320 190" role="presentation">
+            <g class="graph-lines">
+              <path d="M45 42 L132 76 L232 37 L272 112 L186 151 L132 76 L65 139 L186 151 L272 112"/>
+              <path d="M45 42 L65 139 M132 76 L186 151 M232 37 L186 151"/>
+            </g>
+            <circle class="graph-node node-a" cx="45" cy="42" r="12"/>
+            <circle class="graph-node node-b" cx="132" cy="76" r="17"/>
+            <circle class="graph-node node-c" cx="232" cy="37" r="10"/>
+            <circle class="graph-node node-d" cx="272" cy="112" r="13"/>
+            <circle class="graph-node node-e" cx="186" cy="151" r="11"/>
+            <circle class="graph-node node-f" cx="65" cy="139" r="9"/>
+          </svg>
+          <span class="graph-caption">Ideas are connected.</span>
+        </div>
+        <div class="promo-copy">
+          <div class="promo-card-top"><span class="promo-icon">◇</span><span class="promo-label">Note-taking</span></div>
+          <p class="promo-category">Your personal knowledge base</p>
+          <h3>Connect the dots between ideas.</h3>
+          <p>Build a personal library of notes linked together as your thinking grows.</p>
+          <a class="promo-link" href="{{ "tools/obsidian/" | relURL }}">Explore Obsidian <span>→</span></a>
+        </div>
+      </article>
+
+      <article class="promo-card promo-trello reveal">
+        <div class="promo-visual trello-visual" aria-hidden="true">
+          <div class="trello-board">
+            <div class="trello-column"><b>TO DO</b><div class="trello-task task-one"><i></i><span></span><span></span></div><div class="trello-task task-two"><i></i><span></span></div><small>+ Add a card</small></div>
+            <div class="trello-column"><b>IN PROGRESS</b><div class="trello-task task-three"><i></i><span></span><span></span></div><small>+ Add a card</small></div>
+            <div class="trello-column"><b>DONE</b><div class="trello-task task-four"><i>✓</i><span></span></div><small>+ Add a card</small></div>
+          </div>
+          <span class="trello-float">✓ Progress made visible</span>
+        </div>
+        <div class="promo-copy">
+          <div class="promo-card-top"><span class="promo-icon">▤</span><span class="promo-label">Project management</span></div>
+          <p class="promo-category">From plan to done</p>
+          <h3>Make progress easy to see.</h3>
+          <p>Organize work with visual boards, task lists and simple project workflows.</p>
+          <a class="promo-link" href="{{ "tools/trello/" | relURL }}">Explore Trello <span>→</span></a>
+        </div>
+      </article>
+    </div>
+    <div class="promo-footnote"><span>✳</span> Four tools. Different ways to move an idea forward.</div>
   </div>
 </section>
 
