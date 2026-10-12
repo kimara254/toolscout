@@ -3,12 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ .Description | default .Site.Params.description }}">
   <meta name="theme-color" content="#101916">
   <title>{{ .Title }} | {{ .Site.Title }}</title>
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+
+  <!-- ToolScout metadata and visual enhancements -->
+  <link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
+  <link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
+  <meta name="theme-color" content="#172554">
+  {{- $seoTitle := .Title | default .Site.Title -}}
+  {{- $seoDescription := .Description | default .Summary | default "Practical software guides, tool comparisons and productivity advice from ToolScout." -}}
+  <meta name="description" content="{{ $seoDescription | plainify | htmlEscape }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+  <meta property="og:site_name" content="ToolScout">
+  <meta property="og:title" content="{{ $seoTitle | htmlEscape }}">
+  <meta property="og:description" content="{{ $seoDescription | plainify | htmlEscape }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ $seoTitle | htmlEscape }}">
+  <meta name="twitter:description" content="{{ $seoDescription | plainify | htmlEscape }}">
+  {{- if .IsHome }}
+  <script type="application/ld+json">{{ dict "@context" "https://schema.org" "@type" "WebSite" "name" .Site.Title "url" .Site.BaseURL "description" $seoDescription | jsonify | safeJS }}</script>
+  {{- else if or (eq .Section "guides") (eq .Section "tools") }}
+  <script type="application/ld+json">{{ dict "@context" "https://schema.org" "@type" "Article" "headline" .Title "description" $seoDescription "datePublished" (.Date.Format "2006-01-02") "dateModified" (.Lastmod.Format "2006-01-02") "mainEntityOfPage" .Permalink "publisher" (dict "@type" "Organization" "name" .Site.Title) | jsonify | safeJS }}</script>
+  {{- else }}
+  <script type="application/ld+json">{{ dict "@context" "https://schema.org" "@type" "WebPage" "name" .Title "description" $seoDescription "url" .Permalink "isPartOf" (dict "@type" "WebSite" "name" .Site.Title "url" .Site.BaseURL) | jsonify | safeJS }}</script>
+  {{- end }}
+  <link rel="stylesheet" href="{{ "css/toolscout-upgrades.css" | relURL }}">
+
 </head>
 <body>
+<a class="ts-skip-link" href="#main-content">Skip to content</a>
 <header class="header">
   <a class="brand" href="{{ .Site.Home.RelPermalink }}"><span class="brand-mark">T.</span>ToolScout</a>
   <nav class="nav" aria-label="Main navigation">
@@ -16,7 +42,7 @@
     <a href="{{ "disclosure/" | relURL }}">Affiliate disclosure</a><a href="{{ "about/" | relURL }}">About</a><a href="{{ "privacy/" | relURL }}">Privacy</a>
   </nav>
 </header>
-<main class="container">
+<main id="main-content" class="container">
   <article class="article">
     <p class="breadcrumb"><a href="{{ .Site.Home.RelPermalink }}">ToolScout</a> / <a href="{{ "tools/" | relURL }}">Guides</a> / {{ .Title }}</p>
     <p class="eyebrow">{{ .Params.category | default "Software guide" }}</p>
@@ -30,6 +56,12 @@
     <p class="disclosure"><strong>Transparency:</strong> Some links on ToolScout may earn us a commission if you make a qualifying purchase, at no extra cost to you. See our <a href="{{ "disclosure/" | relURL }}"><strong>affiliate disclosure</strong></a>. We aim to provide useful information to help you evaluate your options.</p>
   </article>
 </main>
-<footer class="footer"><div class="container"><div class="footer-inner"><div><a class="brand" href="{{ .Site.Home.RelPermalink }}"><span class="brand-mark">T.</span>ToolScout</a><p>Thoughtful software discovery for your next idea.</p></div><nav class="footer-links"><a href="{{ .Site.Home.RelPermalink }}">Home</a><a href="{{ "tools/" | relURL }}">All guides</a><a href="{{ "disclosure/" | relURL }}">Affiliate disclosure</a><a href="{{ "about/" | relURL }}">About</a><a href="{{ "privacy/" | relURL }}">Privacy</a></nav></div><div class="footer-bottom">© {{ now.Year }} ToolScout</div></div></footer>
+<footer class="footer"><div class="container"><div class="footer-inner"><div><a class="brand" href="{{ .Site.Home.RelPermalink }}"><span class="brand-mark">T.</span>ToolScout</a><p>Thoughtful software discovery for your next idea.</p></div><nav class="footer-links"><a href="{{ .Site.Home.RelPermalink }}">Home</a><a href="{{ "tools/" | relURL }}">All guides</a><a href="{{ "disclosure/" | relURL }}">Affiliate disclosure</a><a href="{{ "about/" | relURL }}">About</a><a href="{{ "privacy/" | relURL }}">Privacy</a></nav></div><div class="footer-bottom">© {{ now.Year }} ToolScout</div></div><nav class="ts-policy-links" aria-label="Policies and information"><a href="{{ "affiliate-disclosure/" | relURL }}">Affiliate Disclosure</a> · <a href="{{ "editorial-policy/" | relURL }}">Editorial Policy</a> · <a href="{{ "contact/" | relURL }}">Contact</a></nav>
+</footer>
+
+<script src="{{ "js/site.js" | relURL }}" defer></script>
+
+<script src="{{ "js/toolscout-upgrades.js" | relURL }}" defer></script>
+
 </body>
 </html>

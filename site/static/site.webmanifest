@@ -1,0 +1,9 @@
+{
+  "name": "ToolScout",
+  "short_name": "ToolScout",
+  "description": "Practical software guides, tool comparisons and productivity advice.",
+  "start_url": "/toolscout/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#172554"
+}

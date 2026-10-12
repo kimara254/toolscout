@@ -1,0 +1,30 @@
+name: ToolScout site quality checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install content-generator dependency when needed
+        run: python -m pip install --upgrade pip Jinja2
+      - name: Set up Hugo Extended
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.154.5'
+          extended: true
+      - name: Generate tool pages
+        run: if [ -f scripts/generate_content.py ]; then python3 scripts/generate_content.py; fi
+      - name: Build site
+        run: hugo --source site --minify --destination public
+      - name: Validate metadata, assets and internal links
+        run: python3 scripts/check_site.py public

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found | ToolScout</title>
+  <meta name="robots" content="noindex,follow">
+  <meta name="description" content="The page you requested could not be found. Explore ToolScout guides and software tools.">
+  <link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/toolscout-upgrades.css" | relURL }}">
+  {{ with .Site.Params.description }}<meta property="og:description" content="{{ . | htmlEscape }}">{{ end }}
+</head>
+<body>
+  <main class="ts-error">
+    <p class="ts-eyebrow">404 · Page not found</p>
+    <h1>This page has wandered off.</h1>
+    <p>The link may be outdated or the address may have changed.</p>
+    <p><a class="ts-action" href="{{ "/" | relURL }}">Return to ToolScout</a></p>
+    <p><a href="{{ "guides/" | relURL }}">Browse practical guides</a> · <a href="{{ "tools/" | relURL }}">Explore tools</a></p>
+  </main>
+</body>
+</html>

@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://kimara254.github.io/toolscout/sitemap.xml
-Sitemap: https://kimara254.github.io/toolscout/sitemap.txt

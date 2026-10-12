@@ -138,3 +138,12 @@ You can also browse [all ToolScout guides](https://kimara254.github.io/toolscout
 [**VISIT PRINTIFY THROUGH TOOLSCOUT →**](https://try.printify.com/7v161q2dj7ua)
 
 *Affiliate link: ToolScout may earn a commission from qualifying activity at no additional cost to you.*
+
+<!-- TOOLSCOUT AFFILIATE CTA -->
+## Explore Printify
+
+If Printify fits the products and fulfilment needs you have identified, review its current catalogue, provider options, pricing and terms before committing. Your own samples and cost calculations should guide the decision.
+
+[Visit Printify](https://try.printify.com/7v161q2dj7ua)
+
+*Disclosure: This may be an affiliate link. ToolScout may earn a commission from a qualifying purchase at no additional cost to you. Verify current terms directly with the provider.*
