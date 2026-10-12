@@ -1,139 +1,225 @@
 (() => {
+  'use strict';
+  document.documentElement.classList.add('js-enabled');
+
   const input = document.getElementById('tool-search');
-  const cards = Array.from(document.querySelectorAll('.tool-card'));
-  const filterBar = document.querySelector('.filters');
-  const originalButtons = Array.from(document.querySelectorAll('[data-filter]'));
+  const form = document.getElementById('search-form');
+  const grid = document.getElementById('tool-cards');
+  if (!grid) return;
+
+  const cards = Array.from(grid.querySelectorAll('.tool-card'));
   const empty = document.getElementById('no-results');
   const count = document.getElementById('result-count');
-  const storageKey = 'toolscout-saved-guides-v1';
+  const subtitle = document.getElementById('results-subtitle');
+  const categoryButtons = Array.from(document.querySelectorAll('[data-filter]'));
+  const sortButtons = Array.from(document.querySelectorAll('[data-sort]'));
+  const quickButtons = Array.from(document.querySelectorAll('[data-quick-filter]'));
+  const savedFilter = document.getElementById('saved-filter');
+  const savedCount = document.getElementById('saved-count');
+  const storageKey = 'toolscout-saved-guides-v2';
 
   let category = 'all';
+  let sortMode = 'curated';
   let savedOnly = false;
   let saved = new Set();
 
-  try {
-    saved = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]'));
-  } catch (_) {}
-
-  const save = () => {
-    try { localStorage.setItem(storageKey, JSON.stringify([...saved])); } catch (_) {}
-  };
+  try { saved = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]')); }
+  catch (_) {}
 
   cards.forEach((card, index) => {
-    const link = card.querySelector('h3 a');
-    const url = link ? link.getAttribute('href') : '';
-    const key = url || link?.textContent?.trim() || String(index);
+    card.dataset.originalIndex = String(index);
+    const titleLink = card.querySelector('h3 a');
+    const key = titleLink ? titleLink.getAttribute('href') : String(index);
     card.dataset.saveKey = key;
 
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'save-guide';
-    button.dataset.saveGuide = key;
-    button.setAttribute('aria-pressed', String(saved.has(key)));
-    button.textContent = saved.has(key) ? '★ Saved' : '☆ Save guide';
-    button.classList.toggle('is-saved', saved.has(key));
-    button.setAttribute('aria-label', (saved.has(key) ? 'Remove saved guide: ' : 'Save guide: ') + (link?.textContent.trim() || 'this guide'));
-    card.append(button);
+    const saveButton = document.createElement('button');
+    saveButton.type = 'button';
+    saveButton.className = 'save-guide';
+    saveButton.dataset.saveGuide = key;
+    saveButton.setAttribute('aria-pressed', String(saved.has(key)));
+    saveButton.textContent = saved.has(key) ? '★ Saved' : '☆ Save guide';
+    saveButton.classList.toggle('is-saved', saved.has(key));
+    saveButton.setAttribute('aria-label', (saved.has(key) ? 'Remove saved guide: ' : 'Save guide: ') + (titleLink?.textContent.trim() || 'guide'));
+    card.append(saveButton);
   });
 
-  let savedButton;
-  if (filterBar) {
-    savedButton = document.createElement('button');
-    savedButton.type = 'button';
-    savedButton.className = 'filter-btn saved-filter';
-    savedButton.dataset.savedFilter = 'true';
-    savedButton.setAttribute('aria-pressed', 'false');
-    savedButton.textContent = '★ Saved guides';
-    filterBar.append(savedButton);
+  function saveStorage() {
+    try { localStorage.setItem(storageKey, JSON.stringify([...saved])); }
+    catch (_) {}
+  }
+
+  function updateCategoryButtons() {
+    categoryButtons.forEach(button => {
+      const active = (button.dataset.filter || 'all') === category;
+      button.classList.toggle('is-active', active);
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    quickButtons.forEach(button => {
+      button.classList.toggle('is-active', button.dataset.quickFilter === category);
+    });
+  }
+
+  function updateSortButtons() {
+    sortButtons.forEach(button => {
+      const active = button.dataset.sort === sortMode;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+  }
+
+  function updateCategoryCounts() {
+    const countMap = new Map();
+    cards.forEach(card => {
+      const c = (card.dataset.category || '').toLowerCase();
+      countMap.set(c, (countMap.get(c) || 0) + 1);
+    });
+    document.querySelectorAll('[data-count]').forEach(node => {
+      const wanted = node.dataset.count;
+      const number = wanted === 'all' ? cards.length : (countMap.get(wanted) || 0);
+      node.textContent = String(number);
+    });
+    if (savedCount) savedCount.textContent = String(saved.size);
   }
 
   function update() {
     const query = (input?.value || '').trim().toLowerCase();
-    let visible = 0;
+    const ordered = [...cards];
 
-    cards.forEach((card) => {
+    if (sortMode === 'latest') {
+      ordered.sort((a, b) => (b.dataset.date || '').localeCompare(a.dataset.date || ''));
+    } else if (sortMode === 'az') {
+      ordered.sort((a, b) => (a.querySelector('h3')?.textContent || '').localeCompare(b.querySelector('h3')?.textContent || ''));
+    } else {
+      ordered.sort((a, b) => Number(a.dataset.originalIndex) - Number(b.dataset.originalIndex));
+    }
+
+    let visible = 0;
+    ordered.forEach(card => {
       const text = ((card.dataset.search || '') + ' ' + card.textContent).toLowerCase();
       const cardCategory = (card.dataset.category || '').toLowerCase();
       const categoryMatch = category === 'all' || cardCategory.includes(category);
       const queryMatch = !query || text.includes(query);
+      const partnerMatch = sortMode !== 'partner' || card.dataset.partner === 'true';
       const savedMatch = !savedOnly || saved.has(card.dataset.saveKey);
-      const show = categoryMatch && queryMatch && savedMatch;
+      const show = categoryMatch && queryMatch && partnerMatch && savedMatch;
       card.hidden = !show;
       if (show) visible++;
     });
 
+    grid.append(...ordered);
     if (empty) {
       empty.hidden = visible !== 0;
-      empty.textContent = savedOnly && saved.size === 0
-        ? 'No saved guides yet. Choose “Save guide” on any guide to keep it here.'
-        : 'No matching guides yet. Try another search or category.';
+      if (sortMode === 'partner' && visible === 0) {
+        empty.querySelector('h3').textContent = 'No partner guides found';
+        empty.querySelector('p').textContent = 'There are no partner guides matching your current filters.';
+      } else if (savedOnly && saved.size === 0) {
+        empty.querySelector('h3').textContent = 'No saved guides yet';
+        empty.querySelector('p').textContent = 'Select “Save guide” on any guide to keep it in your saved list.';
+      } else {
+        empty.querySelector('h3').textContent = 'No guides found';
+        empty.querySelector('p').textContent = 'Try a different search or clear your filters to see the full collection.';
+      }
+      grid.append(empty);
     }
     if (count) count.textContent = `${visible} ${visible === 1 ? 'guide' : 'guides'}`;
-    if (savedButton) {
-      savedButton.classList.toggle('active', savedOnly);
-      savedButton.setAttribute('aria-pressed', String(savedOnly));
+    if (subtitle) {
+      subtitle.textContent = savedOnly ? 'Your saved guides' :
+        sortMode === 'partner' ? 'Partner-linked guides are clearly identified' :
+        sortMode === 'latest' ? 'Recently published first' :
+        sortMode === 'az' ? 'Alphabetical order' : 'Browse our current collection';
+    }
+    if (savedFilter) {
+      savedFilter.classList.toggle('is-active', savedOnly);
+      savedFilter.setAttribute('aria-pressed', String(savedOnly));
+      savedFilter.firstChild.textContent = savedOnly ? '★ ' : '☆ ';
     }
   }
 
-  input?.addEventListener('input', update);
+  function resetFilters() {
+    category = 'all';
+    sortMode = 'curated';
+    savedOnly = false;
+    if (input) input.value = '';
+    updateCategoryButtons();
+    updateSortButtons();
+    update();
+  }
 
-  originalButtons.forEach((button) => {
+  input?.addEventListener('input', update);
+  form?.addEventListener('submit', event => {
+    event.preventDefault();
+    document.getElementById('directory')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    input?.blur();
+  });
+
+  categoryButtons.forEach(button => {
     button.addEventListener('click', () => {
       category = button.dataset.filter || 'all';
       savedOnly = false;
-      originalButtons.forEach((item) => {
-        const active = item === button;
-        item.classList.toggle('active', active);
-        item.setAttribute('aria-pressed', String(active));
-      });
+      updateCategoryButtons();
       update();
     });
   });
 
-  savedButton?.addEventListener('click', () => {
-    savedOnly = !savedOnly;
-    originalButtons.forEach((item) => {
-      const active = !savedOnly && (item.dataset.filter || 'all') === category;
-      item.classList.toggle('active', active);
-      item.setAttribute('aria-pressed', String(active));
+  quickButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      category = button.dataset.quickFilter || 'all';
+      savedOnly = false;
+      updateCategoryButtons();
+      update();
+      document.getElementById('directory')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-    update();
-    document.getElementById('explore')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
-  document.addEventListener('click', (event) => {
+  sortButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      sortMode = button.dataset.sort || 'curated';
+      savedOnly = false;
+      updateSortButtons();
+      update();
+    });
+  });
+
+  savedFilter?.addEventListener('click', () => {
+    savedOnly = !savedOnly;
+    update();
+    document.getElementById('directory')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  document.addEventListener('click', event => {
     const button = event.target.closest('[data-save-guide]');
     if (!button) return;
-
     const key = button.dataset.saveGuide;
     if (saved.has(key)) saved.delete(key);
     else saved.add(key);
-    save();
-
+    saveStorage();
     const isSaved = saved.has(key);
     button.classList.toggle('is-saved', isSaved);
     button.setAttribute('aria-pressed', String(isSaved));
     button.textContent = isSaved ? '★ Saved' : '☆ Save guide';
-    const title = button.closest('.tool-card')?.querySelector('h3 a')?.textContent.trim() || 'this guide';
+    const title = button.closest('.tool-card')?.querySelector('h3 a')?.textContent.trim() || 'guide';
     button.setAttribute('aria-label', (isSaved ? 'Remove saved guide: ' : 'Save guide: ') + title);
+    updateCategoryCounts();
     update();
   });
 
-  // "/" focuses search; Escape clears it.
-  document.addEventListener('keydown', (event) => {
-    const tag = document.activeElement?.tagName;
-    const typing = ['INPUT', 'TEXTAREA', 'SELECT'].includes(tag) || document.activeElement?.isContentEditable;
+  document.getElementById('clear-filters')?.addEventListener('click', resetFilters);
+  document.getElementById('empty-reset')?.addEventListener('click', resetFilters);
+
+  document.addEventListener('keydown', event => {
+    const active = document.activeElement;
+    const typing = active && (['INPUT', 'TEXTAREA', 'SELECT'].includes(active.tagName) || active.isContentEditable);
     if (event.key === '/' && !typing && input) {
       event.preventDefault();
       input.focus();
     }
-    if (event.key === 'Escape' && document.activeElement === input && input.value) {
+    if (event.key === 'Escape' && active === input && input.value) {
       input.value = '';
       update();
     }
   });
 
-  // Reading progress and back-to-top.
   const progress = document.createElement('div');
   progress.className = 'scroll-progress';
   progress.setAttribute('aria-hidden', 'true');
@@ -141,47 +227,31 @@
   document.body.append(progress);
 
   const topButton = document.createElement('button');
-  topButton.className = 'back-to-top';
   topButton.type = 'button';
+  topButton.className = 'back-to-top';
   topButton.setAttribute('aria-label', 'Back to top');
-  topButton.title = 'Back to top';
   topButton.textContent = '↑';
   document.body.append(topButton);
   topButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  let ticking = false;
-  const updateScroll = () => {
-    const doc = document.documentElement;
-    const range = doc.scrollHeight - window.innerHeight;
-    const percent = range > 0 ? (window.scrollY / range) * 100 : 0;
-    progress.firstElementChild.style.width = `${Math.min(100, Math.max(0, percent))}%`;
-    topButton.classList.toggle('is-visible', window.scrollY > 500);
-    ticking = false;
-  };
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(updateScroll);
-      ticking = true;
-    }
-  }, { passive: true });
-  updateScroll();
-
-  // Reveal sections only when they enter the viewport.
-  const revealItems = document.querySelectorAll('.promo-card, .value-item, .tool-card');
-  revealItems.forEach((item) => item.classList.add('reveal'));
-  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const observer = new IntersectionObserver((entries, instance) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-revealed');
-          instance.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    revealItems.forEach((item) => observer.observe(item));
-  } else {
-    revealItems.forEach((item) => item.classList.add('is-revealed'));
+  let scrollPending = false;
+  function onScroll() {
+    if (scrollPending) return;
+    scrollPending = true;
+    window.requestAnimationFrame(() => {
+      const root = document.documentElement;
+      const range = root.scrollHeight - window.innerHeight;
+      const percent = range > 0 ? (window.scrollY / range) * 100 : 0;
+      progress.firstElementChild.style.width = `${Math.max(0, Math.min(100, percent))}%`;
+      topButton.classList.toggle('is-visible', window.scrollY > 450);
+      scrollPending = false;
+    });
   }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
+  updateCategoryCounts();
+  updateCategoryButtons();
+  updateSortButtons();
   update();
 })();

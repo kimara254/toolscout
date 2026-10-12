@@ -3,183 +3,188 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ .Site.Params.description }}">
-  <meta name="theme-color" content="#101916">
-  <title>{{ .Site.Title }} — Discover tools that move you forward</title>
+  <meta name="description" content="{{ .Site.Params.description | default "Discover useful software, compare tools and read practical guides to choose the right tools for your work." }}">
+  <meta name="theme-color" content="#101410">
+  <title>{{ .Site.Title }} — Discover and explore useful tools</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
 </head>
 <body>
-<header class="header">
-  <a class="brand" href="{{ .Site.Home.RelPermalink }}"><span class="brand-mark">T.</span>ToolScout</a>
-  <nav class="nav" aria-label="Main navigation">
-    <a href="#explore">Explore tools</a>
-    <a href="{{ "disclosure/" | relURL }}">About our links</a>
-    <a class="nav-cta" href="#explore">Find your tool ↗</a>
-  </nav>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="{{ .Site.Home.RelPermalink }}" aria-label="ToolScout home">
+      <span class="brand-mark">T.</span><span>ToolScout</span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="nav-active" href="{{ .Site.Home.RelPermalink }}">Discover</a>
+      <a href="{{ "tools/" | relURL }}">All guides</a>
+      <a href="{{ "disclosure/" | relURL }}">About our links</a>
+    </nav>
+    <a class="header-cta" href="#directory">Explore tools <span aria-hidden="true">↗</span></a>
+  </div>
 </header>
+
 <main>
-  <div class="container hero-wrap">
-    <section class="hero">
-      <p class="eyebrow">A smarter way to find software</p>
-      <h1>Less searching.<br><span>Better tools.</span></h1>
-      <p class="hero-copy">Discover software for your work, ideas, and everyday projects. Straightforward guides to help you explore your options with confidence.</p>
-      <label class="search-box">
-        <span class="search-icon" aria-hidden="true">⌕</span>
-        <input id="tool-search" type="search" placeholder="Search tools, categories, or tasks..." aria-label="Search software guides">
-        <span aria-hidden="true">↵</span>
-      </label>
-      <p class="search-hint">Search our guides or choose a category below.</p>
-    </section>
-  </div>
-
-
-<section class="promo-showcase" aria-labelledby="featured-title">
-  <div class="promo-shell">
-    <div class="promo-intro">
-      <p class="eyebrow"><span class="live-dot"></span> Discover something useful</p>
-      <h2 id="featured-title">Good tools make <span>great things happen.</span></h2>
-      <p>Explore a few standout tools for creating, thinking and getting things done.</p>
-    </div>
-
-    <div class="promo-grid">
-      <article class="promo-card promo-printify reveal">
-        <div class="promo-visual printify-visual" aria-hidden="true">
-          <div class="printify-orbit"></div>
-          <div class="product-shirt"><span>YOUR<br>IDEA</span></div>
-          <div class="product-mug"><span>✳</span></div>
-          <div class="visual-tag">YOUR BRAND, YOUR WAY</div>
+  <section class="discovery-hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> YOUR NEXT USEFUL DISCOVERY</p>
+        <h1>Find the right tools<br>for <span>what you do.</span></h1>
+        <p class="hero-description">Explore practical software for your work, ideas and everyday projects. Clear guides to help you decide what is worth your time.</p>
+        <form class="directory-search" id="search-form" role="search">
+          <span class="search-symbol" aria-hidden="true">⌕</span>
+          <input id="tool-search" type="search" placeholder="Search tools, categories or tasks..." aria-label="Search tools and guides" autocomplete="off">
+          <kbd>/</kbd>
+          <button type="submit" aria-label="Search">Search</button>
+        </form>
+        <div class="popular-searches">
+          <span>Explore:</span>
+          <button type="button" data-quick-filter="productivity">Productivity</button>
+          <button type="button" data-quick-filter="note-taking">Note-taking</button>
+          <button type="button" data-quick-filter="project management">Project management</button>
         </div>
-        <div class="promo-copy">
-          <div class="promo-card-top"><span class="promo-icon">✦</span><span class="promo-label">Partner offer</span></div>
-          <p class="promo-category">Print on demand</p>
-          <h3>Turn your ideas into products.</h3>
-          <p>Create custom T-shirts, mugs and more with a print-on-demand platform.</p>
-          <a class="promo-link" href="https://try.printify.com/7v161q2dj7ua" target="_blank" rel="nofollow sponsored noopener">Explore Printify <span>↗</span></a>
-        </div>
-      </article>
-
-      <article class="promo-card promo-notion reveal">
-        <div class="promo-visual notion-visual" aria-hidden="true">
-          <div class="notion-window">
-            <div class="mock-window-top"><i></i><i></i><i></i><span>My workspace</span></div>
-            <div class="notion-layout">
-              <div class="notion-sidebar"><b>✳</b><span></span><span></span><span></span></div>
-              <div class="notion-page"><b>Project hub</b><span class="mock-line wide"></span><span class="mock-line"></span><div class="notion-task"><i>✓</i><span>Plan the week</span></div><div class="notion-task"><i>✓</i><span>Capture ideas</span></div></div>
-            </div>
-          </div>
-          <span class="floating-note">Everything in one place</span>
-        </div>
-        <div class="promo-copy">
-          <div class="promo-card-top"><span class="promo-icon">N</span><span class="promo-label">Productivity</span></div>
-          <p class="promo-category">Your digital workspace</p>
-          <h3>Make room for your best work.</h3>
-          <p>Bring notes, plans, documents and projects together in one workspace.</p>
-          <a class="promo-link" href="{{ "tools/notion/" | relURL }}">Explore Notion <span>→</span></a>
-        </div>
-      </article>
-
-      <article class="promo-card promo-obsidian reveal">
-        <div class="promo-visual obsidian-visual" aria-hidden="true">
-          <svg class="knowledge-graph" viewBox="0 0 320 190" role="presentation">
-            <g class="graph-lines">
-              <path d="M45 42 L132 76 L232 37 L272 112 L186 151 L132 76 L65 139 L186 151 L272 112"/>
-              <path d="M45 42 L65 139 M132 76 L186 151 M232 37 L186 151"/>
-            </g>
-            <circle class="graph-node node-a" cx="45" cy="42" r="12"/>
-            <circle class="graph-node node-b" cx="132" cy="76" r="17"/>
-            <circle class="graph-node node-c" cx="232" cy="37" r="10"/>
-            <circle class="graph-node node-d" cx="272" cy="112" r="13"/>
-            <circle class="graph-node node-e" cx="186" cy="151" r="11"/>
-            <circle class="graph-node node-f" cx="65" cy="139" r="9"/>
-          </svg>
-          <span class="graph-caption">Ideas are connected.</span>
-        </div>
-        <div class="promo-copy">
-          <div class="promo-card-top"><span class="promo-icon">◇</span><span class="promo-label">Note-taking</span></div>
-          <p class="promo-category">Your personal knowledge base</p>
-          <h3>Connect the dots between ideas.</h3>
-          <p>Build a personal library of notes linked together as your thinking grows.</p>
-          <a class="promo-link" href="{{ "tools/obsidian/" | relURL }}">Explore Obsidian <span>→</span></a>
-        </div>
-      </article>
-
-      <article class="promo-card promo-trello reveal">
-        <div class="promo-visual trello-visual" aria-hidden="true">
-          <div class="trello-board">
-            <div class="trello-column"><b>TO DO</b><div class="trello-task task-one"><i></i><span></span><span></span></div><div class="trello-task task-two"><i></i><span></span></div><small>+ Add a card</small></div>
-            <div class="trello-column"><b>IN PROGRESS</b><div class="trello-task task-three"><i></i><span></span><span></span></div><small>+ Add a card</small></div>
-            <div class="trello-column"><b>DONE</b><div class="trello-task task-four"><i>✓</i><span></span></div><small>+ Add a card</small></div>
-          </div>
-          <span class="trello-float">✓ Progress made visible</span>
-        </div>
-        <div class="promo-copy">
-          <div class="promo-card-top"><span class="promo-icon">▤</span><span class="promo-label">Project management</span></div>
-          <p class="promo-category">From plan to done</p>
-          <h3>Make progress easy to see.</h3>
-          <p>Organize work with visual boards, task lists and simple project workflows.</p>
-          <a class="promo-link" href="{{ "tools/trello/" | relURL }}">Explore Trello <span>→</span></a>
-        </div>
-      </article>
-    </div>
-    <div class="promo-footnote"><span>✳</span> Four tools. Different ways to move an idea forward.</div>
-  </div>
-</section>
-
-<section class="container section" id="explore">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">The collection</p>
-        <h2>Explore software</h2>
-        <p>Useful tools, clearly explained.</p>
       </div>
-      <span class="result-count" id="result-count"></span>
-    </div>
-    <div class="filters" aria-label="Filter by category">
-      <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All tools</button>
-      <button class="filter-btn" type="button" data-filter="productivity" aria-pressed="false">Productivity</button>
-      <button class="filter-btn" type="button" data-filter="project management" aria-pressed="false">Project management</button>
-      <button class="filter-btn" type="button" data-filter="note-taking" aria-pressed="false">Note-taking</button>
-    </div>
-    <div class="cards" id="tool-cards">
-      {{ range where .Site.RegularPages "Section" "tools" }}
-      <article class="card tool-card" data-category="{{ .Params.category | default "Software" | lower }}" data-search="{{ .Title }} {{ .Description }} {{ .Params.category }}">
-        <div class="card-top">
-          <span class="tool-mark {{ .Params.slug | lower }}">{{ if eq .Params.slug "notion" }}<img src="{{ "images/notion.svg" | relURL }}" alt="Notion" width="30" height="30" loading="lazy">{{ else if eq .Params.slug "trello" }}<img src="{{ "images/trello.svg" | relURL }}" alt="Trello" width="30" height="30" loading="lazy">{{ else if eq .Params.slug "obsidian" }}<img src="{{ "images/obsidian.svg" | relURL }}" alt="Obsidian" width="30" height="30" loading="lazy">{{ else }}{{ substr .Title 0 1 }}{{ end }}</span>
-          <span class="category-label">{{ .Params.category | default "Software" }}</span>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-orbit orbit-one"></div>
+        <div class="art-orbit orbit-two"></div>
+        <div class="art-window">
+          <div class="art-window-bar"><span></span><span></span><span></span><small>YOUR TOOLKIT</small></div>
+          <div class="art-window-body">
+            <div class="art-row"><i class="art-icon icon-green">N</i><span><b>Plan your work</b><small>Organize ideas and projects</small></span><em>↗</em></div>
+            <div class="art-row"><i class="art-icon icon-purple">◇</i><span><b>Connect your ideas</b><small>Build your knowledge base</small></span><em>↗</em></div>
+            <div class="art-row"><i class="art-icon icon-blue">▤</i><span><b>Track your progress</b><small>Turn plans into action</small></span><em>↗</em></div>
+            <div class="art-status"><span></span> Better tools. Better workflows.</div>
+          </div>
         </div>
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        <p>{{ .Description }}</p>
-        <a class="read-more" href="{{ .RelPermalink }}">Explore guide <span>→</span></a>
-      </article>
-      {{ else }}
-      <p>No guides published yet. New guides will appear here.</p>
-      {{ end }}
-      <div class="no-results" id="no-results" hidden>No matching guides yet. Try another search or category.</div>
+        <div class="floating-chip chip-top">✦ Thoughtfully explored</div>
+        <div class="floating-chip chip-bottom">⌕ Find your next tool</div>
+      </div>
+    </div>
+    <div class="hero-bottom"><span>Practical guides</span><i></i><span>Clear explanations</span><i></i><span>Reader-first recommendations</span></div>
+  </section>
+
+  <section class="partner-feature" aria-label="Partner feature">
+    <div class="partner-art" aria-hidden="true">
+      <div class="partner-shirt"><span>MAKE<br>IT YOURS</span></div>
+      <div class="partner-mug"><span>✳</span></div>
+      <div class="partner-art-label">IDEA → PRODUCT</div>
+    </div>
+    <div class="partner-copy">
+      <div class="partner-kicker"><span class="partner-spark">✦</span> PARTNER FEATURE <span class="partner-disclosure">Affiliate link</span></div>
+      <h2>Have an idea for a product?</h2>
+      <p>Explore print-on-demand, compare product and fulfilment options, and learn what to consider before launching.</p>
+      <div class="partner-actions">
+        <a class="button-primary" href="{{ "tools/printify-print-on-demand-guide/" | relURL }}">Read the Printify guide <span>→</span></a>
+        <a class="button-secondary" href="https://try.printify.com/7v161q2dj7ua" target="_blank" rel="nofollow sponsored noopener">Explore Printify ↗</a>
+      </div>
+      <small>ToolScout may earn a commission from qualifying activity through this referral link, at no extra cost to you.</small>
+    </div>
+  </section>
+
+  <section class="directory-section" id="directory">
+    <div class="directory-heading">
+      <div>
+        <p class="eyebrow">THE TOOL LIBRARY</p>
+        <h2>Discover your next tool.</h2>
+        <p>Useful software, explained without the noise.</p>
+      </div>
+      <span class="total-count" id="result-count" aria-live="polite"></span>
     </div>
 
-    <div class="value-strip">
-      <div class="value-item"><strong>Practical over complicated</strong><p>Clear explanations without unnecessary jargon.</p></div>
-      <div class="value-item"><strong>Explore before you commit</strong><p>Visit official sites to check features and current pricing.</p></div>
-      <div class="value-item"><strong>Reader-first approach</strong><p>Our goal is to help you find tools that fit your needs.</p></div>
+    <div class="directory-layout">
+      <aside class="directory-sidebar" aria-label="Directory filters">
+        <div class="sidebar-heading"><span>Refine your search</span><button id="clear-filters" type="button">Reset</button></div>
+        <div class="sidebar-group">
+          <h3>Browse categories</h3>
+          <button type="button" class="category-filter is-active" data-filter="all"><span class="category-symbol">◈</span><span>All guides</span><span class="category-number" data-count="all"></span></button>
+          <button type="button" class="category-filter" data-filter="productivity"><span class="category-symbol">▦</span><span>Productivity</span><span class="category-number" data-count="productivity"></span></button>
+          <button type="button" class="category-filter" data-filter="note-taking"><span class="category-symbol">◇</span><span>Note-taking</span><span class="category-number" data-count="note-taking"></span></button>
+          <button type="button" class="category-filter" data-filter="project management"><span class="category-symbol">▤</span><span>Project management</span><span class="category-number" data-count="project management"></span></button>
+          <button type="button" class="category-filter" data-filter="print on demand"><span class="category-symbol">✳</span><span>Print on demand</span><span class="category-number" data-count="print on demand"></span></button>
+        </div>
+        <div class="sidebar-note">
+          <span class="sidebar-note-icon">✦</span>
+          <b>Choose with confidence.</b>
+          <p>Read the guides, check current features and pricing, and decide what fits your needs.</p>
+          <a href="{{ "disclosure/" | relURL }}">How our links work →</a>
+        </div>
+        <button type="button" class="saved-filter" id="saved-filter" aria-pressed="false">☆ <span>Saved guides</span><span class="saved-count" id="saved-count">0</span></button>
+      </aside>
+
+      <div class="directory-results">
+        <div class="results-toolbar">
+          <div class="results-label"><strong>Explore guides</strong><span id="results-subtitle">Browse our current collection</span></div>
+          <div class="sort-tabs" role="group" aria-label="Sort guides">
+            <button type="button" data-sort="curated" class="sort-tab is-active" aria-pressed="true">Curated</button>
+            <button type="button" data-sort="latest" class="sort-tab" aria-pressed="false">Latest</button>
+            <button type="button" data-sort="az" class="sort-tab" aria-pressed="false">A–Z</button>
+            <button type="button" data-sort="partner" class="sort-tab" aria-pressed="false">Partner picks</button>
+          </div>
+        </div>
+
+        <div class="tool-grid" id="tool-cards">
+          {{ range where .Site.RegularPages "Section" "tools" }}
+          {{ $slug := .Params.slug | default .File.TranslationBaseName }}
+          {{ $category := .Params.category | default "Software" }}
+          {{ if in .Title "Printify" }}{{ $category = "Print on demand" }}{{ end }}
+          <article class="tool-card" data-category="{{ $category | lower }}" data-search="{{ .Title }} {{ .Description }} {{ $category }} {{ delimit (.Params.tags | default (slice)) " " }}" data-date="{{ .Date.Format "2006-01-02" }}" data-partner="{{ if in .Title "Printify" }}true{{ else }}false{{ end }}">
+            <div class="tool-card-top">
+              <span class="tool-logo logo-{{ $slug | urlize }}">
+                {{ if eq $slug "notion" }}<img src="{{ "images/notion.svg" | relURL }}" alt="" width="38" height="38" loading="lazy">
+                {{ else if eq $slug "obsidian" }}<img src="{{ "images/obsidian.svg" | relURL }}" alt="" width="38" height="38" loading="lazy">
+                {{ else if eq $slug "trello" }}<img src="{{ "images/trello.svg" | relURL }}" alt="" width="38" height="38" loading="lazy">
+                {{ else }}<span>{{ if in .Title "Printify" }}P{{ else }}{{ substr .Title 0 1 }}{{ end }}</span>{{ end }}
+              </span>
+              <span class="tool-category">{{ $category }}</span>
+            </div>
+            <div class="tool-card-content">
+              <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+              <p>{{ .Description }}</p>
+            </div>
+            <div class="tool-card-footer">
+              <a class="guide-link" href="{{ .RelPermalink }}">Read guide <span aria-hidden="true">→</span></a>
+              <span class="guide-type">{{ if in .Title "Printify" }}Beginner guide{{ else }}Tool overview{{ end }}</span>
+            </div>
+          </article>
+          {{ else }}
+          <p class="empty-guides">Guides are being prepared. Check back soon.</p>
+          {{ end }}
+          <div class="no-results" id="no-results" hidden>
+            <span class="no-results-icon">⌕</span>
+            <h3>No guides found</h3>
+            <p>Try a different search or clear your filters to see the full collection.</p>
+            <button type="button" id="empty-reset" class="button-secondary">Clear filters</button>
+          </div>
+        </div>
+        <div class="directory-footnote"><span>✦</span> Our collection grows as new guides are researched and published.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-section">
+    <div class="trust-heading"><p class="eyebrow">OUR APPROACH</p><h2>Discovery without the hype.</h2></div>
+    <div class="trust-grid">
+      <article><span class="trust-icon">⌕</span><h3>Find what fits</h3><p>Search by tool name, category or the kind of work you want to do.</p></article>
+      <article><span class="trust-icon">▤</span><h3>Understand the details</h3><p>Practical guides help you investigate features, use cases and trade-offs.</p></article>
+      <article><span class="trust-icon">♡</span><h3>Choose for yourself</h3><p>Check current information and decide what works for your needs and budget.</p></article>
     </div>
   </section>
 </main>
-<footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div>
-        <a class="brand" href="{{ .Site.Home.RelPermalink }}"><span class="brand-mark">T.</span>ToolScout</a>
-        <p>Thoughtful software discovery for work, creativity, and everyday productivity.</p>
-      </div>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="{{ .Site.Home.RelPermalink }}">Home</a>
-        <a href="{{ "tools/" | relURL }}">All guides</a>
-        <a href="{{ "disclosure/" | relURL }}">Affiliate disclosure</a>
-      </nav>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a class="brand" href="{{ .Site.Home.RelPermalink }}"><span class="brand-mark">T.</span><span>ToolScout</span></a>
+      <p>Thoughtful software discovery for work, creativity and everyday productivity.</p>
     </div>
-    <div class="footer-bottom">© {{ now.Year }} ToolScout. Research tools carefully before purchasing.</div>
+    <div class="footer-column"><strong>Discover</strong><a href="#directory">Explore guides</a><a href="{{ "tools/" | relURL }}">All guides</a></div>
+    <div class="footer-column"><strong>Transparency</strong><a href="{{ "disclosure/" | relURL }}">Affiliate disclosure</a></div>
   </div>
+  <div class="footer-bottom"><span>© {{ now.Year }} ToolScout</span><span>Research tools carefully before purchasing.</span></div>
 </footer>
+
 <script src="{{ "js/site.js" | relURL }}" defer></script>
 </body>
 </html>
