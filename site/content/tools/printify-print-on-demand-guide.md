@@ -20,7 +20,7 @@ tags:
 
 ![Apparel displayed in a clothing shop, illustrating the kinds of products sellers can research for print-on-demand](https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1600&q=85)
 
-<small>Illustrative apparel photography. Product availability and fulfilment options depend on the provider and your chosen setup.</small>
+*Illustrative apparel photography. Product availability and fulfilment options depend on the provider and your chosen setup.*
 
 **Thinking about selling custom products online?** Print-on-demand can help you test an idea without buying a large batch of products upfront. This guide explains how the model works, what to compare, and how to estimate your costs before committing.
 
@@ -48,17 +48,28 @@ You choose a product, prepare a design, create a listing, and connect an eligibl
 
 ![A plain T-shirt representing a customisable product](https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=85)
 
-<small>Example of a basic apparel product; this is illustrative photography, not a guaranteed Printify listing.</small>
+*Example of a basic apparel product; this is illustrative photography, not a guaranteed Printify listing.*
 
-<list>
-  <list-item>**1. Choose a specific audience.** Start with a niche, interest, profession, or community you understand.</list-item>
-  <list-item>**2. Research products and providers.** Compare product quality, print options, production estimates, shipping, and delivery destinations.</list-item>
-  <list-item>**3. Create original designs.** Use artwork and wording you own or have permission to use. Avoid unauthorised logos, copyrighted characters, and protected brand names.</list-item>
-  <list-item>**4. Build your product listing.** Include clear images, accurate sizing, honest descriptions, and realistic delivery expectations.</list-item>
-  <list-item>**5. Connect a sales channel.** Confirm that the integration you need is supported and check any extra fees.</list-item>
-  <list-item>**6. Test before promoting.** Where practical, order a sample to assess materials, print quality, sizing, and packaging.</list-item>
-  <list-item>**7. Review actual performance.** Track orders, customer feedback, refunds, and all costs—not just sales revenue.</list-item>
-</list>
+
+**1. Choose a specific audience.** Start with a niche, interest, profession, or community you understand.
+
+
+**2. Research products and providers.** Compare product quality, print options, production estimates, shipping, and delivery destinations.
+
+
+**3. Create original designs.** Use artwork and wording you own or have permission to use. Avoid unauthorised logos, copyrighted characters, and protected brand names.
+
+
+**4. Build your product listing.** Include clear images, accurate sizing, honest descriptions, and realistic delivery expectations.
+
+
+**5. Connect a sales channel.** Confirm that the integration you need is supported and check any extra fees.
+
+
+**6. Test before promoting.** Where practical, order a sample to assess materials, print quality, sizing, and packaging.
+
+
+**7. Review actual performance.** Track orders, customer feedback, refunds, and all costs—not just sales revenue.
 
 ## What should you compare?
 
@@ -109,9 +120,6 @@ These are starting points for your own research, not a claim that one service is
 ## Is Printify worth exploring?
 
 The sensible approach is to begin with a small, well-researched product range. Estimate your costs, check fulfilment options, and test product quality where practical before investing heavily in advertising.
-
-<box>
-</box>
 
 **Ready to research the platform?**
 
