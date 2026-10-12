@@ -631,3 +631,149 @@ a, button, input {
   height: 30px;
   object-fit: contain;
 }
+
+
+/* ToolScout featured promotional cards */
+.promo-showcase {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(2.5rem, 6vw, 5rem) 0;
+}
+.promo-intro {
+  max-width: 650px;
+  margin: 0 auto 2rem;
+  padding: 0 1.25rem;
+  text-align: center;
+}
+.promo-intro h2 {
+  margin: .4rem 0 .65rem;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  letter-spacing: -.045em;
+}
+.promo-intro > p:last-child { color: var(--muted, #687386); }
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.promo-card {
+  --promo-accent: #4263eb;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+  overflow: hidden;
+  border: 1px solid var(--border, #e3e7ee);
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, #fff, color-mix(in srgb, var(--promo-accent) 7%, #fff));
+  box-shadow: 0 8px 26px rgb(25 35 55 / 5%);
+  animation: toolscout-promo-enter .65s both;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.promo-card:nth-child(2) { animation-delay: .08s; }
+.promo-card:nth-child(3) { animation-delay: .16s; }
+.promo-card:nth-child(4) { animation-delay: .24s; }
+.promo-card::after {
+  position: absolute;
+  top: -3.5rem;
+  right: -3.5rem;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background: var(--promo-accent);
+  opacity: .08;
+  content: "";
+  pointer-events: none;
+}
+.promo-printify { --promo-accent: #16865b; }
+.promo-notion { --promo-accent: #333333; }
+.promo-obsidian { --promo-accent: #8061d9; }
+.promo-trello { --promo-accent: #1677d2; }
+.promo-card-top {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem;
+  margin-bottom: 1.5rem;
+}
+.promo-icon {
+  display: grid;
+  width: 2.7rem;
+  height: 2.7rem;
+  place-items: center;
+  border-radius: .85rem;
+  background: var(--promo-accent);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 750;
+}
+.promo-label {
+  border: 1px solid color-mix(in srgb, var(--promo-accent) 24%, transparent);
+  border-radius: 999px;
+  padding: .35rem .65rem;
+  color: var(--promo-accent);
+  font-size: .75rem;
+  font-weight: 700;
+}
+.promo-category {
+  margin: 0 0 .4rem;
+  color: var(--promo-accent);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.promo-card h3 {
+  margin: .15rem 0 .65rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+  letter-spacing: -.025em;
+}
+.promo-card > p:not(.promo-category) {
+  margin: 0 0 1.25rem;
+  color: var(--muted, #687386);
+  line-height: 1.65;
+}
+.promo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: auto;
+  border-radius: .7rem;
+  padding: .7rem .9rem;
+  background: var(--promo-accent);
+  color: #fff !important;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: gap .2s ease, filter .2s ease;
+}
+.promo-printify .promo-link { animation: toolscout-promo-glow 3s ease-in-out infinite; }
+.promo-link:hover { gap: .8rem; filter: brightness(1.08); }
+@keyframes toolscout-promo-enter {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes toolscout-promo-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgb(22 134 91 / 0%); }
+  50% { box-shadow: 0 0 0 5px rgb(22 134 91 / 12%); }
+}
+@media (hover: hover) {
+  .promo-card:hover {
+    transform: translateY(-5px);
+    border-color: color-mix(in srgb, var(--promo-accent) 45%, #fff);
+    box-shadow: 0 16px 36px rgb(25 35 55 / 11%);
+  }
+}
+@media (max-width: 640px) {
+  .promo-grid { grid-template-columns: 1fr; }
+  .promo-card { padding: 1.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .promo-card, .promo-printify .promo-link {
+    animation: none !important;
+    transition: none !important;
+  }
+}
