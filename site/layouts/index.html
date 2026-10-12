@@ -10,7 +10,7 @@
 </head>
 <body>
 <header class="header">
-  <a class="brand" href="{{ "/" | relURL }}"><span class="brand-mark">T.</span>ToolScout</a>
+  <a class="brand" href="{{ .Site.Home.RelPermalink }}"><span class="brand-mark">T.</span>ToolScout</a>
   <nav class="nav" aria-label="Main navigation">
     <a href="#explore">Explore tools</a>
     <a href="{{ "disclosure/" | relURL }}">About our links</a>
@@ -75,11 +75,11 @@
   <div class="container">
     <div class="footer-inner">
       <div>
-        <a class="brand" href="{{ "/" | relURL }}"><span class="brand-mark">T.</span>ToolScout</a>
+        <a class="brand" href="{{ .Site.Home.RelPermalink }}"><span class="brand-mark">T.</span>ToolScout</a>
         <p>Thoughtful software discovery for work, creativity, and everyday productivity.</p>
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="{{ "/" | relURL }}">Home</a>
+        <a href="{{ .Site.Home.RelPermalink }}">Home</a>
         <a href="{{ "tools/" | relURL }}">All guides</a>
         <a href="{{ "disclosure/" | relURL }}">Affiliate disclosure</a>
       </nav>

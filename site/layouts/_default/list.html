@@ -10,9 +10,9 @@
 </head>
 <body>
 <header class="header">
-  <a class="brand" href="{{ "/" | relURL }}"><span class="brand-mark">T.</span>ToolScout</a>
+  <a class="brand" href="{{ .Site.Home.RelPermalink }}"><span class="brand-mark">T.</span>ToolScout</a>
   <nav class="nav" aria-label="Main navigation">
-    <a href="{{ "/" | relURL }}">Home</a>
+    <a href="{{ .Site.Home.RelPermalink }}">Home</a>
     <a href="{{ "disclosure/" | relURL }}">About our links</a>
   </nav>
 </header>
@@ -33,6 +33,6 @@
     {{ end }}
   </section>
 </main>
-<footer class="footer"><div class="container"><div class="footer-inner"><a class="brand" href="{{ "/" | relURL }}"><span class="brand-mark">T.</span>ToolScout</a><nav class="footer-links"><a href="{{ "/" | relURL }}">Home</a><a href="{{ "disclosure/" | relURL }}">Affiliate disclosure</a></nav></div><div class="footer-bottom">© {{ now.Year }} ToolScout</div></div></footer>
+<footer class="footer"><div class="container"><div class="footer-inner"><a class="brand" href="{{ .Site.Home.RelPermalink }}"><span class="brand-mark">T.</span>ToolScout</a><nav class="footer-links"><a href="{{ .Site.Home.RelPermalink }}">Home</a><a href="{{ "disclosure/" | relURL }}">Affiliate disclosure</a></nav></div><div class="footer-bottom">© {{ now.Year }} ToolScout</div></div></footer>
 </body>
 </html>
