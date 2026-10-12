@@ -25,6 +25,6 @@ jobs:
       - name: Generate tool pages
         run: if [ -f scripts/generate_content.py ]; then python3 scripts/generate_content.py; fi
       - name: Build site
-        run: hugo --source site --minify --destination public
+       run: hugo --source site --minify --destination "${GITHUB_WORKSPACE}/public"
       - name: Validate metadata, assets and internal links
         run: python3 scripts/check_site.py public
