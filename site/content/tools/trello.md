@@ -5,7 +5,8 @@ slug: "trello"
 category: "Project management"
 official_url: "https://trello.com/"
 date: "2026-10-10"
-lastmod: "2026-10-12"
+lastmod: "2026-10-14"
+lastmod: "2026-10-14"
 draft: false
 ---
 

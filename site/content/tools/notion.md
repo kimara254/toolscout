@@ -5,7 +5,8 @@ slug: "notion"
 category: "Productivity"
 official_url: "https://www.notion.so/"
 date: "2026-10-10"
-lastmod: "2026-10-12"
+lastmod: "2026-10-14"
+lastmod: "2026-10-14"
 draft: false
 ---
 

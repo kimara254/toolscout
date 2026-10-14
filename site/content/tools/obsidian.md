@@ -5,7 +5,8 @@ slug: "obsidian"
 category: "Note-taking"
 official_url: "https://obsidian.md/"
 date: "2026-10-10"
-lastmod: "2026-10-12"
+lastmod: "2026-10-14"
+lastmod: "2026-10-14"
 draft: false
 ---
 
