@@ -49,3 +49,20 @@ button, input, select, textarea { font: inherit; }
   nav[data-ts-mobile-menu="true"][data-ts-open="false"] { display: none; }
   nav[data-ts-mobile-menu="true"][data-ts-open="true"] { display: flex; flex-direction: column; align-items: stretch; gap: .75rem; }
 }
+
+
+/* ToolScout image logo */
+.brand-logo {
+  display: block;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .brand-logo {
+    width: 32px;
+    height: 32px;
+  }
+}

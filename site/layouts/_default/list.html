@@ -36,7 +36,7 @@
 <body>
 <a class="ts-skip-link" href="#main-content">Skip to content</a>
 <header class="header">
-  <a class="brand" href="{{ .Site.Home.RelPermalink }}"><span class="brand-mark">T.</span>ToolScout</a>
+  <a class="brand" href="{{ .Site.Home.RelPermalink }}"><img class="brand-logo" src="{{ "images/toolscout-logo.png" | relURL }}" alt="" width="38" height="38">ToolScout</a>
   <nav class="nav" aria-label="Main navigation">
     <a href="{{ .Site.Home.RelPermalink }}">Home</a>
     <a href="{{ "disclosure/" | relURL }}">About our links</a>
@@ -61,7 +61,7 @@
     {{ end }}
   </section>
 </main>
-<footer class="footer"><div class="container"><div class="footer-inner"><a class="brand" href="{{ .Site.Home.RelPermalink }}"><span class="brand-mark">T.</span>ToolScout</a><nav class="footer-links"><a href="{{ .Site.Home.RelPermalink }}">Home</a><a href="{{ "disclosure/" | relURL }}">Affiliate disclosure</a></nav></div><div class="footer-bottom">© {{ now.Year }} ToolScout</div></div><nav class="ts-policy-links" aria-label="Policies and information"><a href="{{ "affiliate-disclosure/" | relURL }}">Affiliate Disclosure</a> · <a href="{{ "editorial-policy/" | relURL }}">Editorial Policy</a> · <a href="{{ "contact/" | relURL }}">Contact</a></nav>
+<footer class="footer"><div class="container"><div class="footer-inner"><a class="brand" href="{{ .Site.Home.RelPermalink }}"><img class="brand-logo" src="{{ "images/toolscout-logo.png" | relURL }}" alt="" width="38" height="38">ToolScout</a><nav class="footer-links"><a href="{{ .Site.Home.RelPermalink }}">Home</a><a href="{{ "disclosure/" | relURL }}">Affiliate disclosure</a></nav></div><div class="footer-bottom">© {{ now.Year }} ToolScout</div></div><nav class="ts-policy-links" aria-label="Policies and information"><a href="{{ "affiliate-disclosure/" | relURL }}">Affiliate Disclosure</a> · <a href="{{ "editorial-policy/" | relURL }}">Editorial Policy</a> · <a href="{{ "contact/" | relURL }}">Contact</a></nav>
 </footer>
 
 <script src="{{ "js/site.js" | relURL }}" defer></script>
